@@ -32,5 +32,16 @@ function calculateAll(event) {
   console.log('grandTotal', grandTotal)
   document.querySelector("#total-value span").innerHTML = grandTotal
 }
+// document.querySelector('.btn-remove').onclick = removeProduct;
 
+let removeBtns = document.querySelectorAll('.btn-remove')
+for (let removeBtn of removeBtns) {
+  removeBtn.onclick = removeProduct;
+}
+function removeProduct(event) {
+  console.log(event.target, this);
+  this.parentNode.parentNode.remove()
+  console.log('removeProduct');
+  calculateAll()
+}
 
