@@ -45,3 +45,33 @@ function removeProduct(event) {
   calculateAll()
 }
 
+let createBtn = document.querySelector('button#create.btn')
+
+createBtn.onclick = function (event) {
+  let productName = document.querySelector("#product-name").value
+  let productPrice = document.querySelector("#product-price").value
+  let row =
+    `<tr class="product">
+        <td class="name">
+          <span>${productName}</span>
+        </td>
+        <td class="price">$<span>${productPrice}</span></td>
+        <td class="quantity">
+          <input type="number" value="0" min="0" placeholder="Quantity" />
+        </td>
+        <td class="subtotal">$<span>0</span></td>
+        <td class="action">
+          <button class="btn btn-remove">Remove</button>
+        </td>
+      </tr>`
+  document.querySelector('tbody').innerHTML += row
+
+
+  let removeBtns = document.querySelectorAll('.btn-remove')
+  for (let removeBtn of removeBtns) {
+    removeBtn.onclick = removeProduct;
+  }
+}
+
+
+
